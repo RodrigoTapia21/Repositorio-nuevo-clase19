@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <!-- saved from url=(0022)http://localhost:8000/ -->
 <html lang="en">
-  
   <head>
     {% load static %}
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -16,7 +15,7 @@
     
 
     <!-- Bootstrap core CSS -->
-<link href="{% static "SocialTravel/css/bootstrap.min.css" %}" rel="stylesheet">
+<link href="{% static 'SocialTravel/css/bootstrap.min.css' %}" rel="stylesheet">
 
     <!-- Favicons -->
 <link rel="apple-touch-icon" href="https://getbootstrap.com/docs/5.0/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
@@ -45,7 +44,7 @@
     </style>
 
     <!-- Custom styles for this template -->
-    <link href="{% static "SocialTravel/css/carousel.css" %}" rel="stylesheet">
+    <link href="{% static 'SocialTravel/css/carousel.css' %}" rel="stylesheet">
   </head>
   <body>
     
@@ -59,17 +58,17 @@
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav me-auto mb-2 mb-md-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="{% url "index" %}">Home</a>
+            <a class="nav-link active" aria-current="page" href="{% url  'index' %}">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url "mis-posts" %}">mis-posts</a>
+            <a class="nav-link" href="{% url 'mis-posts' %}">Mis Posts</a>
           </li>
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a class="nav-link disabled" href="https://getbootstrap.com/docs/5.0/examples/carousel/#" tabindex="-1" aria-disabled="true">Disabled</a>
-          </li>
+          </li> -->
         </ul>
-        <form actio="{% url "buscar-post" %}" class="d-flex">
-          <input class="form-control me-2" name="criterio" type="search" placeholder="Buscar un post" aria-label="Search">
+        <form class="d-flex" action="{% url 'buscar-post' %}">
+          <input class="form-control me-2" name="criterio" type="search" placeholder="Buscar post" aria-label="Buscar">
           <button class="btn btn-outline-success" type="submit">Buscar</button>
         </form>
       </div>
@@ -77,10 +76,10 @@
   </nav>
 </header>
 
-{% block main %}
-{% endblock %} 
+{% block principal %}
+{% endblock %}
 
-    <script src="{% static "SocialTravel/js/bootstrap.bundle.min.js" % }"></script>
+    <script src="{% static 'SocialTravel/js/bootstrap.bundle.min.js' %}"></script>
 
       
   

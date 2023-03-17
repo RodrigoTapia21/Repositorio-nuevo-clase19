@@ -1,5 +1,4 @@
 """project URL Configuration
-
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.1/topics/http/urls/
 Examples:
@@ -15,12 +14,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from SocialTravel.views import index, mostrar_post, agregar_post, buscar_post
+from SocialTravel.views import index, agregar_post, buscar_post
+
 urlpatterns = [
+    path('', index, name="index"),
     path('admin/', admin.site.urls),
-    path("", index, name="index"),
-    path("mis-posts/", mostrar_post, name="mis-posts"),
-    path("mis-posts/agregar", agregar_post, name ="agregar-post"),
-    path("mis-post/buscar", buscar_post, name="buscar-post"),
-    
+    #path('mis-posts/', mostrar_posts, name="mis-posts"),
+    path('mis-posts/agregar', agregar_post, name="agregar-post"),
+    path('mis-posts/buscar', buscar_post, name="buscar-post"),
 ]
