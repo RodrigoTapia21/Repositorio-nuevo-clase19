@@ -3,6 +3,9 @@ from SocialTravel.models import Post
 from SocialTravel.forms import PostForm
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.contrib.auth.views import LoginView, LogoutView
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.mixins import LoginRequiredMixin #sirve para que el usuario no pueda interactuiar si no esta autenticado/registrado
 
 def index(request):
     return render(request, "SocialTravel/index.html")
@@ -17,16 +20,16 @@ class PostDetail(DetailView):
     model = Post
     context_object_name = "post" 
     
-class PostUpdate(UpdateView):
+class PostUpdate(LoginRequiredMixin, UpdateView):
     model = Post
     success_url = reverse_lazy("post-list")#una vez actualizado vuelve a list
     fields = "__all__"
     
-class PostDelete(DeleteView):
+class PostDelete(LoginRequiredMixin, DeleteView):
     model = Post
     success_url = reverse_lazy("post-list")
     
-class PostCreate(CreateView):
+class PostCreate(LoginRequiredMixin, CreateView):
     model = Post 
     success_url = reverse_lazy("post-list")
     fields = "__all__"
@@ -40,3 +43,14 @@ class PostSearch(ListView):
         result = Post.objects.filter(carousel_caption_title__icontains=criterio).all()
         return result
     
+class Login(LoginView):
+    next_page = reverse_lazy("post-list")
+
+
+class Singup(CreateView):
+    form_class = UserCreationForm
+    template_name = "registration/singup.html"
+    success_url = reverse_lazy("post-list")
+    
+class Logout(LogoutView):
+    template_name = "registration/logout.html"
