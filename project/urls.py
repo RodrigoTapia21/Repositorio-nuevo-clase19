@@ -14,7 +14,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from SocialTravel.views import index, PostList, PostDetail, PostUpdate, PostDelete, PostCreate, PostSearch, Login, Singup, Logout
+from SocialTravel.views import index, PostList, PostDetail, PostUpdate, PostDelete, PostCreate, PostSearch, Login, Singup, Logout, PostMineList
  
 urlpatterns = [
     path('', index, name="index"),
@@ -28,4 +28,5 @@ urlpatterns = [
     path("login/", Login.as_view(), name = "login"),
     path("singup/", Singup.as_view(), name = "singup"),
     path("logout/", Logout.as_view(), name = "logout"),
+    path("post/list/mine/", PostMineList.as_view(), name = "post-mine"),
 ]   
